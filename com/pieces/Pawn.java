@@ -31,6 +31,42 @@ public class Pawn extends Piece {
         if(destination_y == getY()) {
             return false;
         }
+        // Pawn can only move in straight line ,if want to move anywhere let them
+        if(this.getX() != destination_x && this.getY() != destination_y){ // condition for can't move diagonally
+            return false;
+        }
+        // if current position of piece on x is 2 then move 1 or 2 step
+        if( this.getX()==2  && possiblesPiece.isWhite()){
+            if(Math.abs(destination_y - getY()) <= 2) {
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+        // check for rest move
+        if(this.getX()>2 && possiblesPiece.isWhite()){
+            if (Math.abs(destination_y - getY()) == 1){
+                return true;
+            }
+        }
+        // if current position of piece on x is 2 then move 1 or 2 step same for black piece
+        if( this.getX()==7  && possiblesPiece.isBlack()){
+            if(Math.abs(destination_y - getY()) <= 2) {
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+        // check for rest move
+        if(this.getX()>2 && possiblesPiece.isBlack()){
+            if (Math.abs(destination_y - getY()) == 1){
+                return true;
+            }
+        }
 
         return true;
     }
